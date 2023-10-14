@@ -29,7 +29,6 @@ def list_all_s3_buckets():
 
     return response['Buckets']
 
-
 def upload_s3_file(file_name, bucket, object_name=None):
     # If S3 object_name was not specified, use file_name
     if object_name is None:
