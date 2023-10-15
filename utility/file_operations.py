@@ -16,7 +16,8 @@ def readJsonFile(file_path):
     else:
         return returningJson
 
-#readJsonFile("assets/config/ec2_config.json")
+#print(readJsonFile("assets/data/ec2_config.json"))
+#print(readJsonFile("assets/data/ec2_details.json"))
 
 # Function for dumping data to the json file    
 def saveJsonFile(file_path, data): 

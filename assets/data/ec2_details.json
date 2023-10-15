@@ -1,1 +1,8 @@
-{}
+{
+    "ec2_instance_list": [
+        "i-03369ea2431f3f1fb"
+    ],
+    "ec2_instance_ip": [
+        "i-03369ea2431f3f1fb|13.127.90.247"
+    ]
+}

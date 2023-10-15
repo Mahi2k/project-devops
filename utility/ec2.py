@@ -59,22 +59,30 @@ def create_ec2_instance(numberOfInstance, minCount = 1, maxCount = 1):
         logging.error(e)
         return False
 
-def save_instance_details(instance_id="i-04ea97cd5e3b81713"):
+def save_instance_details(instance_id = None):
+    filterParams =[{
+                    "Name":"instance-state-name",
+                    "Values":["running"]    
+                }]
+    
     try:
-        reservation_object = ec2_client.describe_instances(InstanceIds=[instance_id]).get("Reservations")
+        reservation_object = ec2_client.describe_instances(
+            Filters = filterParams,
+            InstanceIds=[instance_id]
+            ).get("Reservations")
 
+        # Loop through reservation to get instances and also there public ip
         for reservation in reservation_object:
             for instance in reservation["Instances"]:
                 public_ip = instance.get("PublicIpAddress")
                 print(public_ip)
             # Update the list of ec2 instance id's and save it
             if "ec2_instance_ip" in ec2_instance_data:
-                ec2_instance_data["ec2_instance_ip"].append(instance_id + "-" + str(public_ip))
+                ec2_instance_data["ec2_instance_ip"].append(instance_id + "|" + str(public_ip))
             else:
-                ec2_instance_data["ec2_instance_ip"] = [instance_id + "-" + str(public_ip)]
+                ec2_instance_data["ec2_instance_ip"] = [instance_id + "|" + str(public_ip)]
                 
-            # Save the data into the ec2_details file
-        
+        # Save the data into the ec2_details file
         file_operations.saveJsonFile(ec2_details_path, ec2_instance_data)
         return True
     except ClientError as e:
