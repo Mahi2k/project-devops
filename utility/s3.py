@@ -37,14 +37,22 @@ def upload_s3_file(file_name, bucket, object_name=None):
     # Upload the file
     try:
         s3_client = get_boto3_s3_client()
-        with open("FILE_NAME", "rb") as f:
+        print('Object-Name',object_name)
+        with open(file_name, "rb") as f:
             file = s3_client.upload_fileobj(f, bucket, object_name)
     except ClientError as e:
         logging.error(e)
         return False
     return True
 
-def download_s3_file(fileName, bucketName, objectName):
-    s3_client = get_boto3_s3_client()
-    with open(fileName, 'wb') as f:
-        s3_client.download_fileobj(bucketName, objectName, f)
+def download_s3_file(fileName, bucketName, object_name=None):
+    if object_name is None:
+        object_name = os.path.basename('assets/downloads/'+fileName)
+
+    try:
+        s3_client = get_boto3_s3_client()
+        with open(fileName, 'wb') as f:
+            s3_client.download_fileobj(bucketName, object_name, f)
+    except ClientError as e:
+        logging.error(e)
+        return False

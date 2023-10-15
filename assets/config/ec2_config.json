@@ -1,0 +1,12 @@
+{   
+    "instance_ami_id": "ami-0f5ee92e2d63afc18",
+    "aws_region": "ap-south-1",
+    "key_pair": "group8-boto-keypair",
+    "key_pair_name": "boto3-group8",
+    "profile_name": "default",
+    "instance_type": "t2.micro",
+    "git_url": "https://github.com/UnpredictablePrashant/TravelMemory.git",
+    "mongo_uri": "mongodb+srv://<username>:<password>@cluster0.wbha2pq.mongodb.net/DevopsTravelMemory",
+    "port": "80",
+    "ec2_details_path": "assets/data/ec2_details.json"
+}
