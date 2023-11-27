@@ -93,4 +93,4 @@ def save_instance_details(instance_id = None):
 #     ec2_data = file_operations.readJsonFile(ec2_details_path)
     
 #     for data in ec2_data:
-#         data["insctance_id"]
+#         data["instance_id"]

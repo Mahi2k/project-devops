@@ -8,5 +8,7 @@
     "git_url": "https://github.com/UnpredictablePrashant/TravelMemory.git",
     "mongo_uri": "mongodb+srv://<username>:<password>@cluster0.wbha2pq.mongodb.net/DevopsTravelMemory",
     "port": "80",
-    "ec2_details_path": "assets/data/ec2_details.json"
+    "ec2_details_path": "assets/data/ec2_details.json",
+    "aws_access_key_id": "ACCESS_KEY_ID",
+    "aws_secret_access_key":"SECRET_ACCESS_KEY"
 }
